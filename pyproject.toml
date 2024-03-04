@@ -1,5 +1,5 @@
 [project]
-name            = "runj"
+name            = "python-runj"
 description     = "I just want to run a shell command from Python!"
 authors         = [{name = "Rudolph Pienaar"}]
 license         = "MIT"
