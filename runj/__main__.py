@@ -10,7 +10,7 @@
 import  sys, os
 
 
-from    runj.__init__       import __pkg, __version__
+from    runj.__init__       import __version__
 
 from    argparse            import RawTextHelpFormatter
 from    argparse            import ArgumentParser
