@@ -1,0 +1,11 @@
+# pyproject.toml file specified at the root of the directory
+
+[project]
+name            = "runj"
+version         = "0.9.9"
+dynamic         = ["description", "readme", "license", "authors", "scripts", "dependencies"]
+
+
+[build-system]
+requires        = ["setuptools>=42", "wheel"]   # PEP 508 specifications.
+build-backend   = "setuptools.build_meta"
