@@ -43,7 +43,7 @@ A good set of exemplars is provided in the [`test_core.py`](https://github.com/F
 In the simplest case where some CLI string, say `ls /tmp | wc -l` needs to be evaluated:
 
 ```python
-from runj.runj  import Runj(), json_representation
+from runj.runj  import RunJ, json_representation
 from runj.models.data import ShellRet
 
 shell:RunJ      = RunJ()
