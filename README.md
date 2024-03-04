@@ -2,9 +2,9 @@
 
 _I just want to run a shell command from Python!_
 
-[![Version](https://img.shields.io/docker/v/fnndsc/runj?sort=semver)](https://hub.docker.com/r/fnndsc/runj)
+[![Version](https://img.shields.io/pypi/v/python-runj)](https://pypi.org/project/python-runj/)
 [![MIT License](https://img.shields.io/github/license/fnndsc/runj)](https://github.com/FNNDSC/runj/blob/main/LICENSE)
-[![ci](https://github.com/FNNDSC/runj/actions/workflows/ci.yml/badge.svg)](https://github.com/FNNDSC/runj/actions/workflows/ci.yml)
+[![Publish](https://github.com/FNNDSC/runj/actions/workflows/release.yml/badge.svg)](https://github.com/FNNDSC/runj/actions/workflows/release.yml)
 
 ```
 ░▒▓███████▓▒░░▒▓█▓▒░░▒▓█▓▒░▒▓███████▓▒░       ░▒▓█▓▒░
