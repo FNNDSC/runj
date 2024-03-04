@@ -57,7 +57,7 @@ def test_main_script_count_to_10(capsys) -> None:
 def test_module_script_count_to_10(capsys) -> None:
     """ count to 10 on the shell in a more pythonic way
     """
-    shell                       = RunJ()
+    shell:RunJ                  = RunJ()
     shell.options.spawnScript   = True
     shell.histlogPath           = dir_create(Path('/tmp/runj-testing'))
     ret:ShellRet                = shell("seq 1 10 | tr -d '\n'")
