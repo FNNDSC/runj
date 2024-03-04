@@ -31,7 +31,7 @@ If the need is simply to have a straightforward pythonic way to just call a CLI 
 The best method of installing `runj` and all of its dependencies is by fetching it from PyPI
 
 ```bash
-pip3 install runj
+pip3 install python-runj
 ```
 
 ## Usage
