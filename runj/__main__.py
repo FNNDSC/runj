@@ -25,6 +25,8 @@ CY      = Colors.CYAN
 YL      = Colors.YELLOW
 NC      = Colors.NO_COLOUR
 GR      = Colors.GREEN
+PL      = Colors.PURPLE
+RD      = Colors.RED
 
 str_desc = Colors.CYAN + f"""{CY}
 ░▒▓███████▓▒░░▒▓█▓▒░░▒▓█▓▒░▒▓███████▓▒░       ░▒▓█▓▒░
@@ -39,7 +41,7 @@ str_desc = Colors.CYAN + f"""{CY}
 
                              -- version {YL}{__version__}{NC} --
 
-    {CY}runj{NC} is python module and script for executing arbitrary CLI strings on
+    {GR}runj{NC} is python module and script for executing arbitrary CLI strings on
     the underlying system. In script mode its utility is somewhat limited (since
     running a script from the CLI to run a CLI string seems rather contorted);
     however from within python it allows for an easy mechanism to run CLI apps
@@ -48,52 +50,56 @@ str_desc = Colors.CYAN + f"""{CY}
 
 """ + Colors.NO_COLOUR
 
-package_CLIself = '''
-        --exec <CLIcmdToExec>                                                   \\
-       [--spawnScript]                                                          \\
-       [--log <logDir>]                                                         \\
-       [--logPrefix <prefix>]                                                   \\
-       [--version]
+package_CLIself = f'''
+        {CY} --exec {PL}<CLIcmdToExec>{NC}              \\
+        [{CY}--spawnScript{NC}]                     \\
+        [{CY}--scriptDir {PL}<dir>{NC}]                 \\
+        [{CY}--background{NC}]                      \\
+        [{CY}--log {PL}<logDir>{NC}]                    \\
+        [{CY}--logPrefix {PL}<prefix>{NC}]              \\
+        [{CY}--version{NC}]                         \\
+        [{CY}--man{NC}]                             \\
+        [{CY}--synopsis{NC}]                        \\
 '''
 
-package_argSynopsisSelf = '''
-        --exec <CLIcmdToExec>
+package_argSynopsisSelf = f'''
+        {CY}--exec {PL}<CLIcmdToExec>{NC}
         The command line expression to exeute.
 
-        [--spawnScript]
+        [{CY}--spawnScript{NC}]
         If specified, create a script around the <CLIcmdToExec> and execute
         the script. This is particularly useful for jobs that need to be run
         in the background.
 
-        [--scriptDir <dir>]
+        [{CY}--scriptDir {PL}<dir>{NC}]
         If specified, write any spawnedScripts to <dir>. If not specified, will
         autogenerate the <dir> given current date, typically in
         `/tmp/runj-history`
 
-        [--background]
+        [{CY}--backgroundi{NC}]
         If specified, and in conjunction with --spawnScript, will open the
         subprocess and not wait/block on stdout/stderr.
 
-        IMPORTANT: Even if the <CLIcmdToExec> ends with a "background" '&'
+        {RD}IMPORTANT{NC}: Even if the <CLIcmdToExec> ends with a "background" '&'
         character, this script will still block until the child has completed.
         To detach and not wait, for the child, you MUST specify this flag.
 
         In fact, the "&" is not needed in the <CLIcmdToExec>.
 
-        [--log <dir>]
+        [{CY}--log {PL}<logDir>{NC}]
         If specified, create in <dir> a log snapshot of various env/exec
         values (uid, pid, etc).
 
-        [--logPrefix <prefix>]
+        [{CY}--logPrefix {PL}<prefix>{NC}]
         If specified, prepend log snapshots with <prefix>.
 
-        [--version]
+        [{CY}--version{NC}]
         If specified, print the version and exit.
 
-        [--man]
+        [{CY}--man{NC}]
         If specified, print a detail man page and exit.
 
-        [--synopsis]
+        [{CY}--synopsis{NC}]
         If specified, print only an overview synposis and exit.
 
 '''
@@ -108,36 +114,46 @@ package_argsSynopsisDS      = package_argSynopsisSelf
 
 def synopsis(ab_shortOnly = False):
     scriptName = os.path.basename(sys.argv[0])
-    shortSynopsis =  """
-    NAME
+    shortSynopsis = f"""
+    {YL}NAME{NC}
 
-        runj
+        {GR}runj{NC}
 
-    SYNOPSIS
+    {YL}SYNOPSIS
 
-        runj """ + package_CLIfull + """
+        {GR}runj{NC} """ + package_CLIfull + f"""
 
-    BRIEF EXAMPLE
+    {YL}BRIEF EXAMPLE
 
-        runj --exec "ls /"
+        {GR}runj {CY}--exec {YL}"ls /"{NC}
 
     """
 
-    description =  '''
-    DESCRIPTION
+    description =  f'''
+    {YL}DESCRIPTION
 
-        ``runj`` runs some user specified CLI either "directly"
+        {GR}runj{NC} runs some user specified CLI either "directly"
         or from a created script.
 
 
-    ARGS ''' +  package_argsSynopsisFull     +\
-                package_CLItagHelp + '''
+    {YL}ARGS{NC}
+    ''' +  package_argsSynopsisFull     +\
+                package_CLItagHelp + f'''
 
-    EXAMPLES
+    {YL}EXAMPLES{NC}
 
     Perform  `ls -1 /tmp | wc -l`
 
-        runj --exec 'ls -1 /tmp | wc -l'
+    <python>
+        {PL}from{NC} runj.runj  import {CY}RunJ, json_representation
+        {PL}from{NC} runj.models.data import {CY}ShellRet
+
+        shell:{CY}RunJ{NC}      = {PL}RunJ(){NC}
+        ret:{CY}ShellRet{NC}    = {GR}shell{NC}({YL}'ls /tmp | wc -l'{NC})
+        {PL}print({GR}json_representation{NC}(ret))
+
+    <CLI>
+        {GR}runj {CY}--exec {YL}'ls -1 /tmp | wc -l'{NC}
 
     '''
 
