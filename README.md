@@ -36,7 +36,7 @@ pip3 install runj
 
 ## Usage
 
-A good set of exemplars is provided in the `test_core.py` tests.
+A good set of exemplars is provided in the [`test_core.py`](https://github.com/FNNDSC/runj/blob/master/tests/test_core.py) test code.
 
 ### Python API
 
