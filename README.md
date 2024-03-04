@@ -18,9 +18,11 @@ _I just want to run a shell command from Python!_
 
 ## Abstract
 
-The accepted method for irunning underlying system or shell commands via python is using the `subprocess` module and specifically the `Popen()` function. While this method exposes considerable flexibility, it can be complex, especially if the requirement is simply to run a shell command from a python module and capture its output.
+The accepted method for running underlying system or shell commands via python is using the `subprocess` module and specifically the `Popen()` function. While this method exposes considerable flexibility, it can be complex, requiring some tedious boilerplate for capturing `stdout` and `stderr`, return values, etc. Moreover, depending on context (foreground vs background for example), some of the `Popen()` semantics and supporting boilerplate differ.
 
-`runj` addresses this need. Using the `RunJ()` class from the `runj` module provides a much simpler API than the `subprocess.Popen()` approach. Additionally, the `runj` script can run CLI commands and return a JSON formatted result by default.
+If the need is simply to have a straightforward pythonic way to just call a CLI string on the underlying system that uses `Popen()`, can handle real time `stdout` echoing, can easily background tasks, does `stderr` capturing, etc, `runj` can help.
+
+`runj` offers a same-named script, and a `RunJ()` class. Using the `RunJ()` class provides a much simpler and cleaner API compared to `Popen()` and boilerplate. Additionally, the `runj` script can run CLI commands and return a JSON formatted result by default.
 
 ## Installation
 
