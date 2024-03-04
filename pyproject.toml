@@ -8,6 +8,9 @@ requires-python = ">= 3.10"
 
 dynamic         = ["version"]
 
+[project.scripts]
+runj            = "runj.__main__:main"
+
 [build-system]
 requires = ["hatchling"]
 build-backend = "hatchling.build"
